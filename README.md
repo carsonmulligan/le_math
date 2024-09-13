@@ -10,7 +10,12 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 - **`4d_hypercube.py`**: Simulates the visualization of a hypercube in 4D space.
 - **`4d_rotation_animation.py`**: Animates a 4D object rotating through different axes.
 - **`4d_rotation.png`**: A snapshot of the 4D rotation animation.
+
+  ![4D Rotation](./4d_rotation.png)
+
 - **`4d_vibrational_slowdown.png`**: A visual representation showing the effects of slowing down vibrational data in a 4D context.
+
+  ![4D Vibrational Slowdown](./4d_vibrational_slowdown.png)
 
 ### Quantum Coherence & Decay 🎶
 
@@ -21,6 +26,9 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 
 - **`four_color_theorem_v2.py`**: An enhanced script that visualizes the Four-Color Theorem, ensuring that no two adjacent regions in a map share the same color.
 - **`four_color_theorem.png.jpeg`**: A rendered image showing an example of the Four-Color Theorem in action.
+
+  ![Four Color Theorem](./four_color_theorem.png.jpeg)
+
 - **`four_color_theorem.py`**: The original script exploring the Four-Color Theorem using graph theory.
 
 ### Knot Theory 🔗
@@ -30,6 +38,9 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 ### Riemann Zeta Function & Prime Distribution 🧮
 
 - **`magnitude_of_riemann_zeta_function_on_critical_line.png`**: A plot showing the magnitude of the Riemann zeta function along the critical line.
+
+  ![Magnitude of Zeta Function](./magnitude_of_riemann_zeta_function_on_critical_line.png)
+
 - **`riemann_prime_distribution.py`**: An interactive 3D visualization exploring the distribution of prime numbers and their relationship to the Riemann Hypothesis.
 - **`riemann_zeta_function.py`**: Computes the zeros of the Riemann Zeta Function and relates them to prime number distributions.
 
@@ -42,7 +53,13 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 ### Prime Number Analysis 📈
 
 - **`prime_gaps_between_consecutive_primes_1_to_1_million.png`**: A graph depicting the gaps between consecutive prime numbers up to 1 million.
+
+  ![Prime Gaps Between Consecutive Primes](./prime_gaps_between_consecutive_primes_1_to_1_million.png)
+
 - **`prime_number_density.png`**: A visual representation of the density of prime numbers in different intervals.
+
+  ![Prime Number Density](./prime_number_density.png)
+
 - **`prime_number_distribution.py`**: A script visualizing the distribution of prime numbers on a large number line, highlighting prime gaps.
 
 ### Twin Primes 🔢
@@ -63,6 +80,8 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 
 - **`trefoil_knot_transformations.png`**: A 3D visualization of trefoil knots and their transformations in space.
 
+  ![Trefoil Knot Transformations](./trefoil_knot_transformations.png)
+
 ### Time Slider ⏳
 
 - **`time_slider.py`**: A time-based slider visualization tool that allows users to explore changes in mathematical models or physical simulations over time.
@@ -70,4 +89,6 @@ Welcome to the **Mathematical Universe**! 🌌 This repository contains various 
 ### Quantum vs. Classical Coherence 📉
 
 - **`quantum_vs_classical_coherence_over_time.png`**: A comparative visualization showing how quantum coherence behaves differently from classical coherence over time.
+
+  ![Quantum vs Classical Coherence](./quantum_vs_classical_coherence_over_time.png)
 
