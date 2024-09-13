@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometrization Conjecture Exploration</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #controls { position: absolute; top: 10px; left: 10px; z-index: 10; }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <button id="spherical-btn">Spherical</button>
+    <button id="euclidean-btn">Euclidean</button>
+    <button id="hyperbolic-btn">Hyperbolic</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+    // Basic scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Light setup
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    scene.add(directionalLight);
+
+    // Initial camera position
+    camera.position.set(0, 2, 5);
+    controls.update();
+
+    // Function to create spherical geometry
+    function createSphericalGeometry() {
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshStandardMaterial({ color: 0xff0000, wireframe: false });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    // Function to create euclidean (flat) geometry
+    function createEuclideanGeometry() {
+        const geometry = new THREE.PlaneGeometry(3, 3);
+        const material = new THREE.MeshStandardMaterial({ color: 0x0000ff, side: THREE.DoubleSide, wireframe: false });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    // Function to create hyperbolic geometry (saddle shape)
+    function createHyperbolicGeometry() {
+        const geometry = new THREE.ParametricGeometry((u, v, target) => {
+            const x = Math.sinh(u);
+            const y = Math.sinh(v);
+            const z = Math.cosh(u) - Math.cosh(v);
+            target.set(x, y, z);
+        }, 20, 20);
+
+        const material = new THREE.MeshStandardMaterial({ color: 0x00ff00, wireframe: false });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    // Store geometries and current geometry
+    let currentGeometry;
+    const geometries = {
+        spherical: createSphericalGeometry(),
+        euclidean: createEuclideanGeometry(),
+        hyperbolic: createHyperbolicGeometry()
+    };
+
+    // Function to switch geometries
+    function switchGeometry(newGeometry) {
+        if (currentGeometry) scene.remove(currentGeometry);
+        currentGeometry = newGeometry;
+        scene.add(currentGeometry);
+    }
+
+    // Initial geometry
+    switchGeometry(geometries.spherical);
+
+    // Event listeners for buttons
+    document.getElementById('spherical-btn').addEventListener('click', () => {
+        switchGeometry(geometries.spherical);
+    });
+
+    document.getElementById('euclidean-btn').addEventListener('click', () => {
+        switchGeometry(geometries.euclidean);
+    });
+
+    document.getElementById('hyperbolic-btn').addEventListener('click', () => {
+        switchGeometry(geometries.hyperbolic);
+    });
+
+    // Render loop
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
+</body>
+</html>
