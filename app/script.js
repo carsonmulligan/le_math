@@ -70,21 +70,54 @@ function onDocumentMouseDown(event) {
     }
 }
 
-// Handle the animation and camera movement
-function animate() {
-    requestAnimationFrame(animate);
-    
-    // Make the camera follow the curve (simulating riding the curve)
-    let t = (Date.now() % 10000) / 10000;
-    let pointOnCurve = zetaCurve.getPointAt(t);
-    camera.position.set(pointOnCurve.x, pointOnCurve.y, camera.position.z);
-    camera.lookAt(new THREE.Vector3(0, 0, 0)); // Focus the camera on the origin
-    
+// Add event listener for mouse clicks
+document.addEventListener('mousedown', onDocumentMouseDown, false);
+
+// Smooth camera movement along the zeta curve
+function smoothCameraMovement(curve) {
+    let t = 0;
+    function animate() {
+        t += 0.001;  // Increment t for smooth movement
+        if (t > 1) t = 0;  // Loop back to the start
+
+        let point = curve.getPointAt(t);  // Get the point on the curve at parameter t
+        camera.position.set(point.x, point.y, point.z + 10);  // Position camera slightly above the curve
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Call the smooth camera movement function
+smoothCameraMovement(zetaCurve);
+
+// Function to scale the zeta curve dynamically
+function updateCurveScale(scale) {
+    zetaCurve.scale.set(scale, scale, scale);  // Adjust the scale of the Riemann Zeta curve
     renderer.render(scene, camera);
 }
 
-// Add event listeners for clicks
-document.addEventListener('mousedown', onDocumentMouseDown, false);
+// Handle space travel (keyboard controls)
+function handleSpaceTravel() {
+    document.addEventListener('keydown', function(event) {
+        switch(event.code) {
+            case 'ArrowUp':
+                camera.position.y += 1;  // Move the camera upward
+                break;
+            case 'ArrowDown':
+                camera.position.y -= 1;  // Move the camera downward
+                break;
+            case 'ArrowLeft':
+                camera.position.x -= 1;  // Move the camera left
+                break;
+            case 'ArrowRight':
+                camera.position.x += 1;  // Move the camera right
+                break;
+        }
+        renderer.render(scene, camera);
+    });
+}
 
-// Start animation loop
-animate();
+// Activate space travel
+handleSpaceTravel();
