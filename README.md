@@ -1,6 +1,6 @@
 # 🧠 Mathematical Visualizations and Explorations
 
-Welcome to the **Mathematical Universe**! 🌌 This repository contains various Python scripts and visualizations related to advanced mathematical topics like **prime number distribution**, **graph theory**, **four-dimensional geometry**, and **cosmology**. Each script and asset has been designed to offer an interactive or visual representation of complex mathematical ideas.
+Welcome to the **Mathematical Universe**! 🌌 This repository contains various Python scripts and visualizations related to advanced mathematical topics like **prime number distribution**, **graph theory**, **four-dimensional geometry**, and **cosmology**. Each script and asset has been designed to offer an interactive or visual representation of complex mathematical ideas...
 
 ## 📂 Directory Overview
 
